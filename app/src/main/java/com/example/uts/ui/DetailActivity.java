@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uts.R;
 import com.example.uts.api.ApiConfig;
@@ -24,8 +23,6 @@ import retrofit2.Response;
 public class DetailActivity extends AppCompatActivity {
 
     private ProgressBar progressBarDetail;
-    private RecyclerView rvUser;
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -33,7 +30,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        rvUser = findViewById(R.id.rvUser);
         progressBarDetail = findViewById(R.id.progressBarDetail);
 
         Bundle extras = getIntent().getExtras();
@@ -55,15 +51,14 @@ public class DetailActivity extends AppCompatActivity {
                         showLoading(false);
                         User user = response.body();
                         if (user != null){
-                            String name = "Name: " + user.getName();
-                            String usernames = "Username: " + user.getUsername();
-                            String bio = "Bio: " + user.getBio();
-                            String gambar = user.getAvatarUrl();
-
+                            String name = "Name : " + user.getName();
+                            String usernames = "Username : " + user.getUsername();
+                            String bio = "Bio : " + user.getBio();
+                            String avatar = user.getAvatarUrl();
                             nameDetail.setText(name);
                             usernameDetail.setText(usernames);
                             bioDetail.setText(bio);
-                            Picasso.get().load(gambar).into(avatarDetail);
+                            Picasso.get().load(avatar).into(avatarDetail);
                         }else {
                             Toast.makeText(DetailActivity.this, "Failed to get user data", Toast.LENGTH_SHORT).show();
                         }
