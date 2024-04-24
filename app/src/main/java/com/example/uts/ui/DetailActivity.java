@@ -51,12 +51,12 @@ public class DetailActivity extends AppCompatActivity {
                         showLoading(false);
                         User user = response.body();
                         if (user != null){
-                            String name = "Name : " + user.getName();
                             String usernames = "Username : " + user.getUsername();
+                            String name = "Name : " + user.getName();
                             String bio = "Bio : " + user.getBio();
                             String avatar = user.getAvatarUrl();
-                            nameDetail.setText(name);
                             usernameDetail.setText(usernames);
+                            nameDetail.setText(name);
                             bioDetail.setText(bio);
                             Picasso.get().load(avatar).into(avatarDetail);
                         }else {
@@ -67,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
-                    Toast.makeText(DetailActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivity.this, "Error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
