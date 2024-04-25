@@ -1,8 +1,11 @@
 package com.example.uts.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class SearchUserResponse {
+    @SerializedName("items")
     private List<User> users;
 
     public List<User> getUsers() {
@@ -13,4 +16,3 @@ public class SearchUserResponse {
         this.users = users;
     }
 }
-
