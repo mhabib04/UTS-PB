@@ -23,6 +23,8 @@ import retrofit2.Response;
 public class DetailActivity extends AppCompatActivity {
 
     private ProgressBar progressBarDetail;
+    private TextView nameDetail, usernameDetail, bioDetail;
+    private ImageView avatarDetail;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,46 +40,33 @@ public class DetailActivity extends AppCompatActivity {
             ApiService apiService = ApiConfig.getApiService();
             Call<User> userCall = apiService.getUser(username);
 
-            TextView nameDetail = findViewById(R.id.nameDetail);
-            TextView usernameDetail = findViewById(R.id.usernameDetail);
-            TextView bioDetail = findViewById(R.id.bioDetail);
-            ImageView avatarDetail = findViewById(R.id.avatarDetail);
+            nameDetail = findViewById(R.id.nameDetail);
+            usernameDetail = findViewById(R.id.usernameDetail);
+            bioDetail = findViewById(R.id.bioDetail);
+            avatarDetail = findViewById(R.id.avatarDetail);
 
-            showLoading(true);
+            progressBarDetail.setVisibility(View.VISIBLE);
             userCall.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.isSuccessful()){
-                        showLoading(false);
+                        progressBarDetail.setVisibility(View.GONE);
                         User user = response.body();
                         if (user != null){
-                            String usernames = "Username : " + user.getUsername();
-                            String name = "Name : " + user.getName();
-                            String bio = "Bio : " + user.getBio();
-                            String avatar = user.getAvatarUrl();
-                            usernameDetail.setText(usernames);
-                            nameDetail.setText(name);
-                            bioDetail.setText(bio);
-                            Picasso.get().load(avatar).into(avatarDetail);
+                            usernameDetail.setText("Username : " + user.getUsername());
+                            nameDetail.setText("Name : " + user.getName());
+                            bioDetail.setText("Bio : " + user.getBio());
+                            Picasso.get().load(user.getAvatarUrl()).into(avatarDetail);
                         }else {
                             Toast.makeText(DetailActivity.this, "Failed to get user data", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
                     Toast.makeText(DetailActivity.this, "Error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-    }
-
-    private void showLoading(Boolean isLoading) {
-        if (isLoading) {
-            progressBarDetail.setVisibility(View.VISIBLE);
-        } else {
-            progressBarDetail.setVisibility(View.GONE);
         }
     }
 }
