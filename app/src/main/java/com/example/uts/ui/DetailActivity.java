@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.uts.R;
 import com.example.uts.api.ApiConfig;
 import com.example.uts.api.ApiService;
-import com.example.uts.data.model.User;
+import com.example.uts.data.User;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;

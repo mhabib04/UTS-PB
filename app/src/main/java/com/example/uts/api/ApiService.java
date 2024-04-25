@@ -1,7 +1,7 @@
 package com.example.uts.api;
 
-import com.example.uts.data.model.SearchUserResponse;
-import com.example.uts.data.model.User;
+import com.example.uts.data.SearchUserResponse;
+import com.example.uts.data.User;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

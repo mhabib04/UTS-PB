@@ -1,4 +1,4 @@
-package com.example.uts.data.model;
+package com.example.uts.data;
 
 import com.google.gson.annotations.SerializedName;
 

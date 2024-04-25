@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.uts.R;
 import com.example.uts.api.ApiConfig;
 import com.example.uts.api.ApiService;
-import com.example.uts.data.model.SearchUserResponse;
-import com.example.uts.data.model.User;
+import com.example.uts.data.SearchUserResponse;
+import com.example.uts.data.User;
 
 import java.util.ArrayList;
 import java.util.List;

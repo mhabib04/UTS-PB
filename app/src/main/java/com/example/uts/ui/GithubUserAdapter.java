@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uts.R;
-import com.example.uts.data.model.User;
+import com.example.uts.data.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
