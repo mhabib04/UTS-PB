@@ -1,11 +1,13 @@
 package com.example.uts.ui;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnSearch;
     private EditText etQuery;
+    private TextView txtSearchResult;
     private RecyclerView rvUser;
     private ProgressBar progressBar;
     private GithubUserAdapter adapter;
     private List<User> userList = new ArrayList<>();
-
     private ApiService apiService;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         etQuery = findViewById(R.id.etQuery);
         rvUser = findViewById(R.id.rvUser);
         progressBar = findViewById(R.id.progressBar);
+        txtSearchResult = findViewById(R.id.txtSearchResult);
 
         apiService = ApiConfig.getApiService();
 
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 String query = etQuery.getText().toString().trim();
                 if (!TextUtils.isEmpty(query)) {
                     searchUsers(query);
+                    txtSearchResult.setText("Results From Searching \"" + query + "\"");
                 } else {
                     Toast.makeText(MainActivity.this, "Please enter a username", Toast.LENGTH_SHORT).show();
                 }
