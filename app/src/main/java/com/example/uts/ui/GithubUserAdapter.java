@@ -55,10 +55,8 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Vi
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView imgAvatar;
         TextView txtName;
-
         public ViewHolder(View itemView) {
             super(itemView);
 
