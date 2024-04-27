@@ -13,6 +13,7 @@ public interface ApiService {
     @GET("search/users")
     Call<SearchUserResponse> searchUsers(@Query("q") String query);
 
+    //@Headers({"Authorization: token <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>"})
     @GET("users/{username}")
     Call<User> getUser(@Path("username") String username);
 }
