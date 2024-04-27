@@ -10,7 +10,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-
     @Headers({"Authorization: token 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"})
     @GET("search/users")
     Call<SearchUserResponse> searchUsers(@Query("q") String query);
